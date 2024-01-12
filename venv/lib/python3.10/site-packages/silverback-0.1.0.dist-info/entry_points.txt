@@ -1,0 +1,2 @@
+[console_scripts]
+silverback = silverback._cli:cli

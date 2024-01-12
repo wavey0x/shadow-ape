@@ -1,0 +1,145 @@
+Metadata-Version: 2.1
+Name: silverback
+Version: 0.1.0
+Summary: Ape SDK for the Silverback platform
+Home-page: https://github.com/ApeWorX/silverback
+Author: ApeWorX Ltd.
+Author-email: admin@apeworx.io
+License: Apache-2.0
+Keywords: ethereum
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8,<4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: eth-ape <1.0,>=0.6.19
+Requires-Dist: taskiq[metrics] <0.7.0,>=0.6.0
+Requires-Dist: click
+Provides-Extra: dev
+Requires-Dist: pytest >=6.0 ; extra == 'dev'
+Requires-Dist: pytest-xdist ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: hypothesis <7.0,>=6.2.0 ; extra == 'dev'
+Requires-Dist: black >=23.7.0 ; extra == 'dev'
+Requires-Dist: mypy <2,>=1.4.1 ; extra == 'dev'
+Requires-Dist: types-setuptools ; extra == 'dev'
+Requires-Dist: flake8 >=5.0.4 ; extra == 'dev'
+Requires-Dist: isort >=5.10.1 ; extra == 'dev'
+Requires-Dist: mdformat >=0.7.16 ; extra == 'dev'
+Requires-Dist: mdformat-gfm >=0.3.5 ; extra == 'dev'
+Requires-Dist: mdformat-frontmatter >=0.4.1 ; extra == 'dev'
+Requires-Dist: mdformat-pyproject >=0.0.1 ; extra == 'dev'
+Requires-Dist: myst-parser <2,>=1.0.0 ; extra == 'dev'
+Requires-Dist: sphinx-click <5,>=4.4.0 ; extra == 'dev'
+Requires-Dist: Sphinx <7,>=6.1.3 ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme <2,>=1.2.0 ; extra == 'dev'
+Requires-Dist: sphinxcontrib-napoleon >=0.7 ; extra == 'dev'
+Requires-Dist: sphinx-plausible <0.2,>=0.1.2 ; extra == 'dev'
+Requires-Dist: setuptools ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: commitizen ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: pytest-watch ; extra == 'dev'
+Requires-Dist: IPython ; extra == 'dev'
+Requires-Dist: ipdb ; extra == 'dev'
+Provides-Extra: doc
+Requires-Dist: myst-parser <2,>=1.0.0 ; extra == 'doc'
+Requires-Dist: sphinx-click <5,>=4.4.0 ; extra == 'doc'
+Requires-Dist: Sphinx <7,>=6.1.3 ; extra == 'doc'
+Requires-Dist: sphinx-rtd-theme <2,>=1.2.0 ; extra == 'doc'
+Requires-Dist: sphinxcontrib-napoleon >=0.7 ; extra == 'doc'
+Requires-Dist: sphinx-plausible <0.2,>=0.1.2 ; extra == 'doc'
+Provides-Extra: lint
+Requires-Dist: black >=23.7.0 ; extra == 'lint'
+Requires-Dist: mypy <2,>=1.4.1 ; extra == 'lint'
+Requires-Dist: types-setuptools ; extra == 'lint'
+Requires-Dist: flake8 >=5.0.4 ; extra == 'lint'
+Requires-Dist: isort >=5.10.1 ; extra == 'lint'
+Requires-Dist: mdformat >=0.7.16 ; extra == 'lint'
+Requires-Dist: mdformat-gfm >=0.3.5 ; extra == 'lint'
+Requires-Dist: mdformat-frontmatter >=0.4.1 ; extra == 'lint'
+Requires-Dist: mdformat-pyproject >=0.0.1 ; extra == 'lint'
+Provides-Extra: release
+Requires-Dist: setuptools ; extra == 'release'
+Requires-Dist: wheel ; extra == 'release'
+Requires-Dist: twine ; extra == 'release'
+Provides-Extra: test
+Requires-Dist: pytest >=6.0 ; extra == 'test'
+Requires-Dist: pytest-xdist ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: hypothesis <7.0,>=6.2.0 ; extra == 'test'
+
+# Quick Start
+
+Silverback lets you create and deploy your own Python bots that respond to on-chain events.
+The Silverback library leverages the [Ape](https://docs.apeworx.io/ape/stable/userguides/quickstart) development framework as well as it's ecosystem of plugins and packages to enable you to develop simple-yet-sophisticated automated applications that can listen and respond to live chain data.
+
+Silverback applications are excellent for use cases that involve continuously monitoring and responding to on-chain events, such as newly confirmed blocks or contract event logs.
+
+Some examples of these types of applications:
+
+- Monitoring new pool creations, and depositing liquidity
+- Measuring trading activity of popular pools
+- Listening for large swaps to update a telegram group
+
+## Documentation
+
+Read the [development userguide](https://docs.apeworx.io/silverback/stable/development) to learn more how to develop an application.
+
+## Dependencies
+
+- [python3](https://www.python.org/downloads) version 3.8 or greater, python3-dev
+
+## Installation
+
+Silverback relies heavily on the Ape development framework, so it's worth it to familarize yourself with how to install Ape and it's plugins using the [Ape installation userguide](https://docs.apeworx.io/ape/latest/userguides/quickstart#installation).
+
+### via `pip`
+
+You can install the latest release via [`pip`](https://pypi.org/project/pip/):
+
+```bash
+pip install silverback
+```
+
+### via `setuptools`
+
+You can clone the repository and use [`setuptools`](https://github.com/pypa/setuptools) for the most up-to-date version:
+
+```bash
+git clone https://github.com/ApeWorX/silverback.git silverback
+cd silverback
+python3 setup.py install
+```
+
+## Quick Usage
+
+Checkout [the example](./example.py) to see how to use the library.
+
+To run your bot against a live network, this SDK includes a simple runner you can use via:
+
+```sh
+$ silverback run "example:app" --network :mainnet:alchemy
+```
+
+## Docker Usage
+
+```sh
+$ docker run --volume $PWD:/home/harambe/project --volume ~/.tokenlists:/home/harambe/.tokenlists apeworx/silverback:latest run "example:app" --network :mainnet:alchemy
+```
+
+## Development
+
+This project is in development and should be considered a beta.
+Things might not be in their final state and breaking changes may occur.
+Comments, questions, criticisms and pull requests are welcomed.

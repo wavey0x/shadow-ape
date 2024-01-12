@@ -1,0 +1,6 @@
+name: shadow-ape
+
+geth:
+  ethereum:
+    mainnet:
+      uri: http://192.168.1.102:8545
