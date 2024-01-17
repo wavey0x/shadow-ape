@@ -2,16 +2,16 @@
 
 pragma solidity 0.8.19;
 
-import "./SafeERC20.sol";
-import "./Address.sol";
-import "./PrismaOwnable.sol";
-import "./SystemStart.sol";
-import "./IPrismaToken.sol";
-import "./IEmissionSchedule.sol";
-import "./IIncentiveVoting.sol";
-import "./ITokenLocker.sol";
-import "./IBoostDelegate.sol";
-import "./IBoostCalculator.sol";
+import "SafeERC20.sol";
+import "Address.sol";
+import "PrismaOwnable.sol";
+import "SystemStart.sol";
+import "IPrismaToken.sol";
+import "IEmissionSchedule.sol";
+import "IIncentiveVoting.sol";
+import "ITokenLocker.sol";
+import "IBoostDelegate.sol";
+import "IBoostCalculator.sol";
 
 interface IEmissionReceiver {
     function notifyRegisteredId(uint256[] memory assignedIds) external returns (bool);
@@ -99,6 +99,7 @@ contract PrismaVault is PrismaOwnable, SystemStart {
     event BoostDelegationSet(address indexed boostDelegate, bool isEnabled, uint256 feePct, address callback);
     event BoostConsumed(address indexed account, address indexed receiver, address indexed boostDelegate, uint256 amount, uint256 adjustedAmount, uint256 fee);
 
+
     constructor(
         address _prismaCore,
         IPrismaToken _token,
@@ -114,9 +115,9 @@ contract PrismaVault is PrismaOwnable, SystemStart {
         deploymentManager = _manager;
 
         // ensure the stability pool is registered with receiver ID 0
-        // _voter.registerNewReceiver();
-        // idToReceiver[0] = Receiver({ account: _stabilityPool, isActive: true });
-        // emit NewReceiverRegistered(_stabilityPool, 0);
+        _voter.registerNewReceiver();
+        idToReceiver[0] = Receiver({ account: _stabilityPool, isActive: true });
+        emit NewReceiverRegistered(_stabilityPool, 0);
     }
 
     function setInitialParameters(
@@ -431,12 +432,12 @@ contract PrismaVault is PrismaOwnable, SystemStart {
                 adjustedAmount -= fee;
             }
 
-            emit BoostConsumed(account, receiver, boostDelegate, amount, adjustedAmount, fee);
-
             // add `storedPendingReward` to `adjustedAmount`
             // this happens after any boost modifiers or delegation fees, since
             // these effects were already applied to the stored value
             adjustedAmount += storedPendingReward[account];
+
+            emit BoostConsumed(account, receiver, boostDelegate, amount, adjustedAmount, fee);
 
             _transferOrLock(account, receiver, adjustedAmount);
 
